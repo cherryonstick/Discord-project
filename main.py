@@ -3,7 +3,7 @@ import pyautogui
 import pyperclip
 import time
 import random
-import keyboard
+
 from threading import Thread, Event
 
 ctk.set_appearance_mode("dark")
@@ -175,10 +175,7 @@ class AutoTyper(ctk.CTk):
         self.status_label.configure(text=text, text_color=color)
 
     def _bind_hotkey(self):
-        try:
-            keyboard.add_hotkey("f6", self._stop)
-        except Exception:
-            self.hotkey_label.configure(text="(hotkey unavailable)")
+        self.bind_all("<F6>", lambda e: self._stop())
 
     # ── Logic ──
 
